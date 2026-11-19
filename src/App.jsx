@@ -385,7 +385,7 @@ export default function App() {
     <div className="flex flex-wrap items-center justify-center gap-4">
         
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/radowitz"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-lg text-sm transition"
@@ -393,7 +393,7 @@ export default function App() {
               <Linkedin className="w-4 h-4" /> Conectar no LinkedIn
             </a>
             <a
-              href="mailto:contato@romuloradowitz.com.br"
+              href="mailto:romuloradowitz@hotmail.com"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-medium rounded-lg text-sm transition"
             >
               <Mail className="w-4 h-4" /> Contato Executivo
