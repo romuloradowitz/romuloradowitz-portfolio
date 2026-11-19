@@ -275,7 +275,7 @@ export default function App() {
 
   const handlePasswordLogin = (e) => {
     e.preventDefault();
-    if (adminPasswordInput === 'romulo123' || adminPasswordInput === 'radowitz2026') {
+    if (adminPasswordInput === 'R@dowitz#2026!' || adminPasswordInput === 'R@dowitz#2027!') {
       setIsAdmin(true);
       setShowLoginModal(false);
       setAdminPasswordInput('');
