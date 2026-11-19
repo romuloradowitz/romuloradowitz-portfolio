@@ -383,6 +383,7 @@ export default function App() {
             Mais de 16 anos liderando programas e projetos de alta complexidade, governança corporativa, transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.
           </p>
           <div className="flex flex-wrap items-center gap-4">
+            <p className="max-w-3xl text-slate-400 text-base md:text-lg leading-relaxed mb-8 text-balance">
             <a
               href="https://www.linkedin.com"
               target="_blank"
