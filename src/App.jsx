@@ -380,7 +380,7 @@ export default function App() {
             Diretor Corporativo de PMO & Líder de Projetos Estratégicos
           </p>
           <p className="max-w-3xl text-slate-400 text-base md:text-lg leading-relaxed mb-8">
-            Mais de 20 anos liderando programas de alta complexidade, governança corporativa, integração pós-fusão (M&A) e transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.
+            Mais de 16 anos liderando programas e projetos de alta complexidade, governança corporativa, transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <a
