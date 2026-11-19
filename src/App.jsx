@@ -779,7 +779,7 @@ export default function App() {
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-slate-400 mb-1">
-                    Ganho / ROI (%)
+                    Ganho / ROI ANUAL(%)
                   </label>
                   <input
                     type="number"
