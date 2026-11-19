@@ -379,10 +379,10 @@ export default function App() {
           <p className="text-xl md:text-2xl text-cyan-400 font-medium mb-6">
             Diretor Corporativo de PMO & Líder de Projetos Estratégicos
           </p>
-       <p className="max-w-4xl text-slate-400 text-base md:text-lg leading-relaxed mb-8 text-balance">
+     <p className="max-w-3xl mx-auto text-slate-400 text-base md:text-lg leading-relaxed mb-8 text-balance">
             Mais de 16 anos liderando programas e projetos de alta complexidade, governança corporativa, transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-center justify-center gap-4">
         
             <a
               href="https://www.linkedin.com"
