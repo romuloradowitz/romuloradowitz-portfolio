@@ -266,47 +266,57 @@ function extractLatestYear(yearStr) {
   return Math.max(...matches.map(Number));
 }
 
-// Emblemas Institucionais Vetoriais (PMI, FIA, FGV)
+// Logos Oficiais (arquivos salvos na pasta public/)
 function InstitutionLogos() {
   return (
-    <div className="inline-flex items-center gap-2">
+    <div className="inline-flex flex-wrap items-center justify-center gap-2.5">
       {/* PMI */}
-      <span
+      <div
         title="Project Management Institute (PMI)"
-        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs font-bold tracking-wider"
+        className="h-9 px-3.5 rounded-full bg-white/95 border border-slate-700/80 flex items-center justify-center shadow-sm"
       >
-        <svg className="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="2" width="9" height="9" rx="1.5" fill="currentColor" />
-          <rect x="13" y="2" width="9" height="9" rx="1.5" fill="#10b981" />
-          <rect x="2" y="13" width="9" height="9" rx="1.5" fill="#f59e0b" />
-          <path d="M13 13h9v9h-9z" stroke="currentColor" strokeWidth="2" />
-        </svg>
-        PMI
-      </span>
+        <img
+          src="/logo-pmi.png"
+          alt="Project Management Institute (PMI)"
+          className="h-6 w-auto object-contain"
+        />
+      </div>
 
       {/* FIA */}
-      <span
+      <div
         title="Fundação Instituto de Administração (FIA Business School)"
-        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs font-bold tracking-wider"
+        className="h-9 px-3.5 rounded-full bg-white/95 border border-slate-700/80 flex items-center justify-center shadow-sm"
       >
-        <svg className="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none">
-          <polygon points="12,2 22,20 2,20" stroke="currentColor" strokeWidth="2.2" fill="none" />
-          <circle cx="12" cy="14" r="2.2" fill="currentColor" />
-        </svg>
-        FIA
-      </span>
+        <img
+          src="/logo-fia.png"
+          alt="FIA Business School"
+          className="h-5 w-auto object-contain"
+        />
+      </div>
 
       {/* FGV */}
-      <span
+      <div
         title="Fundação Getulio Vargas (FGV)"
-        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs font-bold tracking-wider"
+        className="h-9 px-3.5 rounded-full bg-white/95 border border-slate-700/80 flex items-center justify-center shadow-sm"
       >
-        <svg className="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="2.2" />
-          <path d="M7 12h10M12 7v10" stroke="currentColor" strokeWidth="2" />
-        </svg>
-        FGV
-      </span>
+        <img
+          src="/logo-fgv.png"
+          alt="Fundação Getulio Vargas (FGV)"
+          className="h-4 w-auto object-contain"
+        />
+      </div>
+
+      {/* SBC */}
+      <div
+        title="Sociedade Brasileira de Computação (SBC)"
+        className="h-9 px-3.5 rounded-full bg-white/95 border border-slate-700/80 flex items-center justify-center shadow-sm"
+      >
+        <img
+          src="/logo-sbc.png"
+          alt="Sociedade Brasileira de Computação (SBC)"
+          className="h-6 w-auto object-contain"
+        />
+      </div>
     </div>
   );
 }
@@ -729,12 +739,12 @@ export default function App() {
         </div>
 
         <div className="max-w-6xl mx-auto px-6 py-12 md:py-16 text-center flex flex-col items-center">
-          {/* Badges + Logos PMI, FIA, FGV centralizados */}
+          {/* Badges + Logos Oficiais PMI, FIA, FGV, SBC centralizados */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 mb-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase">
               {t.heroBadge}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase">
               PMP® • PMBOK® 8
             </span>
             <InstitutionLogos />
