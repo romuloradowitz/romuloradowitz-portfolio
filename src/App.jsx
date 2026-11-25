@@ -17,14 +17,259 @@ import {
   Filter,
   Linkedin,
   Mail,
-  ChevronRight
+  ChevronRight,
+  Globe,
+  Cpu,
+  Layers,
+  GraduationCap,
+  ShieldCheck
 } from 'lucide-react';
 import { supabase } from './supabaseClient';
 
 const DEFAULT_SECTORS = ['Saúde Suplementar', 'Telecomunicações', 'TI & Transformação Digital', 'Operações & PMO'];
 const DEFAULT_TYPES = ['Transformação Organizacional', 'Implantação de PMO', 'Eficiência Operacional', 'Integração M&A'];
 
+const TRANSLATIONS = {
+  pt: {
+    heroBadge: 'Portfólio Executivo & Track Record STAR',
+    heroRole: 'Diretor Corporativo de PMO & Líder de Projetos Estratégicos',
+    heroSubtitle:
+      'Mais de 16 anos e +133 projetos e programas liderados de alta complexidade, governança corporativa e transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.',
+    linkedinBtn: 'Conectar no LinkedIn',
+    contactBtn: 'Contato Executivo',
+    kpi1Label: 'Track Record Total',
+    kpi1Value: '+133',
+    kpi1Sub: 'Projetos e Programas liderados',
+    kpi2Label: 'Orçamento Gerido (Cases)',
+    kpi2Sub: 'Capex/Opex sob governança STAR',
+    kpi3Label: 'ROI / Ganho Médio',
+    kpi3Sub: 'Retorno e eficiência capturados',
+    kpi4Label: 'Setores de Atuação',
+    kpi4Sub: 'Indústrias de alta complexidade',
+    aboutBadge: 'Trajetória & Formação Executiva',
+    aboutTitle: 'Da Engenharia de Sistemas à Estratégia Corporativa',
+    aboutP1:
+      'Com mais de 133 projetos e programas liderados ao longo da carreira, minha atuação une profundidade técnica, rigor metodológico e visão de negócios para transformar objetivos estratégicos em resultados tangíveis.',
+    aboutP2:
+      'Essa jornada começou com uma base sólida em tecnologia como Bacharel em Sistemas de Informação pela UFSC, permitindo dialogar de igual para igual com equipes de engenharia, dados e arquitetura. Para escalar essa entrega no ambiente corporativo, especializei-me na execução com o MBA em Gerenciamento de Projetos pela FGV, consolidando o domínio sobre governança, controle financeiro e gestão de riscos.',
+    aboutP3:
+      'Entendendo que projetos bem executados só geram valor quando apontam para a direção certa, concluí a Pós-Graduação em Administração Estratégica, conectando o portfólio diretamente às metas do C-level e ao ROI da companhia. Esse conhecimento é validado globalmente pela Certificação Internacional PMP® (alinhada ao PMBOK® 8) e potencializado pelas especializações em Inteligência Artificial aplicada a Projetos pelo PMI, aplicando IA na análise preditiva de riscos, automação de PMO e tomada de decisão.',
+    aboutP4:
+      'Na prática, desenho a governança sob medida para cada desafio, transitando com fluidez entre abordagens preditivas, ágeis (adaptativas) e híbridas.',
+    credentialsTitle: 'Credenciais & Especializações',
+    credentials: [
+      { title: 'Certificação Internacional PMP®', subtitle: 'PMI • Alinhado ao PMBOK® 8ª Edição', icon: 'shield' },
+      { title: 'IA Aplicada a Projetos', subtitle: 'Especializações Executivas • PMI', icon: 'cpu' },
+      { title: 'MBA em Gerenciamento de Projetos', subtitle: 'Fundação Getulio Vargas (FGV)', icon: 'award' },
+      { title: 'Pós-Graduação em Administração Estratégica', subtitle: 'Alinhamento Corporativo & ROI', icon: 'trending' },
+      { title: 'Bacharel em Sistemas de Informação', subtitle: 'Universidade Federal de Santa Catarina (UFSC)', icon: 'grad' }
+    ],
+    methodologiesTitle: 'Abordagens Metodológicas',
+    methodologies: ['Preditiva', 'Ágil (Adaptativa)', 'Híbrida'],
+    casesTitle: 'Cases Executivos (Metodologia STAR)',
+    casesSubtitle:
+      'Classificados por relevância financeira (orçamento) e ano mais recente. Situação, Tarefa, Ação e Resultados mensuráveis.',
+    filterAll: 'Todos',
+    filterSectorPrefix: 'Setor',
+    filterTypePrefix: 'Frente',
+    loadingCases: 'Carregando portfólio executivo...',
+    emptyCases: 'Nenhum case STAR publicado para este filtro ainda.',
+    budgetLabel: 'Orçamento',
+    roiLabel: 'Impacto / ROI',
+    starS: 'S — Situação & Contexto',
+    starT: 'T — Tarefa & Desafio Executivo',
+    starA: 'A — Ação & Governança Aplicada',
+    starR: 'R — Resultados Mensuráveis',
+    footerRights: 'Todos os direitos reservados.',
+    adminArea: 'Área do Administrador',
+    authenticated: 'Autenticado'
+  },
+  en: {
+    heroBadge: 'Executive Portfolio & STAR Track Record',
+    heroRole: 'Corporate PMO Director & Strategic Portfolio Leader',
+    heroSubtitle:
+      'Over 16 years and 133+ high-complexity projects and programs led across corporate governance and digital transformation in Healthcare, Telecommunications, and Information Technology.',
+    linkedinBtn: 'Connect on LinkedIn',
+    contactBtn: 'Executive Contact',
+    kpi1Label: 'Total Track Record',
+    kpi1Value: '133+',
+    kpi1Sub: 'Projects & Programs led',
+    kpi2Label: 'Managed Budget (Cases)',
+    kpi2Sub: 'Capex/Opex under STAR governance',
+    kpi3Label: 'Average ROI / Gain',
+    kpi3Sub: 'Captured return & efficiency',
+    kpi4Label: 'Industry Sectors',
+    kpi4Sub: 'High-complexity environments',
+    aboutBadge: 'Executive Background & Credentials',
+    aboutTitle: 'From Systems Engineering to Corporate Strategy',
+    aboutP1:
+      'With over 133 projects and programs led throughout my career, my leadership bridges technical depth, methodological rigor, and business acumen to turn strategic objectives into measurable outcomes.',
+    aboutP2:
+      'My journey began with a strong technological foundation as a B.S. in Information Systems from UFSC, enabling seamless alignment with engineering, data, and architecture teams. To scale delivery in enterprise environments, I earned an MBA in Project Management from FGV, mastering governance, financial control, and risk management.',
+    aboutP3:
+      'Recognizing that well-executed projects only create value when aligned with the right direction, I completed a Postgraduate degree in Strategic Management, directly linking portfolio execution to C-level goals and corporate ROI. This expertise is globally validated by the PMP® International Certification (aligned with PMBOK® 8) and amplified by PMI specializations in Artificial Intelligence for Project Management, leveraging AI for predictive risk analysis, PMO automation, and executive decision-making.',
+    aboutP4:
+      'In practice, I tailor governance frameworks to each business challenge, operating seamlessly across predictive, agile (adaptive), and hybrid approaches.',
+    credentialsTitle: 'Credentials & Specializations',
+    credentials: [
+      { title: 'PMP® International Certification', subtitle: 'PMI • Aligned with PMBOK® 8th Edition', icon: 'shield' },
+      { title: 'AI in Project Management', subtitle: 'Executive Specializations • PMI', icon: 'cpu' },
+      { title: 'MBA in Project Management', subtitle: 'Fundação Getulio Vargas (FGV)', icon: 'award' },
+      { title: 'Postgraduate in Strategic Management', subtitle: 'Corporate Strategy & ROI Alignment', icon: 'trending' },
+      { title: 'B.S. in Information Systems', subtitle: 'Federal University of Santa Catarina (UFSC)', icon: 'grad' }
+    ],
+    methodologiesTitle: 'Methodological Approaches',
+    methodologies: ['Predictive', 'Agile (Adaptive)', 'Hybrid'],
+    casesTitle: 'Executive Cases (STAR Methodology)',
+    casesSubtitle:
+      'Ranked by financial relevance (budget) and most recent year. Situation, Task, Action, and measurable Results.',
+    filterAll: 'All',
+    filterSectorPrefix: 'Sector',
+    filterTypePrefix: 'Track',
+    loadingCases: 'Loading executive portfolio...',
+    emptyCases: 'No STAR cases published for this filter yet.',
+    budgetLabel: 'Budget',
+    roiLabel: 'Impact / ROI',
+    starS: 'S — Situation & Context',
+    starT: 'T — Task & Executive Challenge',
+    starA: 'A — Action & Applied Governance',
+    starR: 'R — Measurable Results',
+    footerRights: 'All rights reserved.',
+    adminArea: 'Administrator Area',
+    authenticated: 'Authenticated'
+  },
+  it: {
+    heroBadge: 'Portafoglio Esecutivo & Track Record STAR',
+    heroRole: 'Direttore PMO Corporate & Leader di Progetti Strategici',
+    heroSubtitle:
+      'Oltre 16 anni e più di 133 progetti e programmi guidati ad alta complessità, governance aziendale e trasformazione digitale nei settori Sanità Integrativa, Telecomunicazioni e Information Technology.',
+    linkedinBtn: 'Connetti su LinkedIn',
+    contactBtn: 'Contatto Esecutivo',
+    kpi1Label: 'Track Record Totale',
+    kpi1Value: '+133',
+    kpi1Sub: 'Progetti e Programmi guidati',
+    kpi2Label: 'Budget Gestito (Casi)',
+    kpi2Sub: 'Capex/Opex sotto governance STAR',
+    kpi3Label: 'ROI / Guadagno Medio',
+    kpi3Sub: 'Ritorno ed efficienza acquisiti',
+    kpi4Label: 'Settori di Attività',
+    kpi4Sub: 'Industrie ad alta complessità',
+    aboutBadge: 'Percorso & Formazione Esecutiva',
+    aboutTitle: "Dall'Ingegneria dei Sistemi alla Strategia Aziendale",
+    aboutP1:
+      'Con oltre 133 progetti e programmi guidati nel corso della mia carriera, unisco profondità tecnica, rigore metodologico e visione di business per trasformare gli obiettivi strategici in risultati concreti.',
+    aboutP2:
+      "Questo percorso è iniziato con una solida base tecnologica grazie alla Laurea in Sistemi Informativi presso l'UFSC, che mi consente di dialogare allo stesso livello con i team di ingegneria, dati e architettura. Per scalare la delivery in contesti aziendali complessi, ho conseguito un MBA in Project Management presso la FGV, consolidando la padronanza di governance, controllo finanziario e gestione dei rischi.",
+    aboutP3:
+      "Consapevole che i progetti ben eseguiti generano valore solo se orientati nella giusta direzione, ho completato una Specializzazione post-laurea in Amministrazione Strategica, collegando il portafoglio direttamente agli obiettivi del C-level e al ROI aziendale. Queste competenze sono validate a livello globale dalla Certificazione Internazionale PMP® (allineata al PMBOK® 8) e potenziate dalle specializzazioni in Intelligenza Artificiale applicata ai Progetti del PMI, utilizzando l'IA per l'analisi predittiva dei rischi, l'automazione del PMO e il supporto decisionale.",
+    aboutP4:
+      'Nella pratica, progetto una governance su misura per ogni sfida, operando con fluidità tra approcci predittivi, agili (adattivi) e ibridi.',
+    credentialsTitle: 'Credenziali & Specializzazioni',
+    credentials: [
+      { title: 'Certificazione Internazionale PMP®', subtitle: 'PMI • Allineato al PMBOK® 8ª Edizione', icon: 'shield' },
+      { title: 'IA Applicata ai Progetti', subtitle: 'Specializzazioni Esecutive • PMI', icon: 'cpu' },
+      { title: 'MBA in Project Management', subtitle: 'Fundação Getulio Vargas (FGV)', icon: 'award' },
+      { title: 'Specializzazione in Amministrazione Strategica', subtitle: 'Allineamento Strategico & ROI', icon: 'trending' },
+      { title: 'Laurea in Sistemi Informativi', subtitle: 'Università Federale di Santa Catarina (UFSC)', icon: 'grad' }
+    ],
+    methodologiesTitle: 'Approcci Metodologici',
+    methodologies: ['Predittivo', 'Agile (Adattivo)', 'Ibrido'],
+    casesTitle: 'Casi Esecutivi (Metodologia STAR)',
+    casesSubtitle:
+      'Classificati per rilevanza finanziaria (budget) e anno più recente. Situazione, Compito, Azione e Risultati misurabili.',
+    filterAll: 'Tutti',
+    filterSectorPrefix: 'Settore',
+    filterTypePrefix: 'Area',
+    loadingCases: 'Caricamento portafoglio esecutivo...',
+    emptyCases: 'Nessun caso STAR pubblicato per questo filtro.',
+    budgetLabel: 'Budget',
+    roiLabel: 'Impatto / ROI',
+    starS: 'S — Situazione & Contesto',
+    starT: 'T — Compito & Sfida Esecutiva',
+    starA: 'A — Azione & Governance Applicata',
+    starR: 'R — Risultati Misurabili',
+    footerRights: 'Tutti i diritti riservati.',
+    adminArea: 'Area Amministratore',
+    authenticated: 'Autenticato'
+  },
+  de: {
+    heroBadge: 'Executive Portfolio & STAR Track Record',
+    heroRole: 'Corporate PMO Director & Strategischer Portfoliomanager',
+    heroSubtitle:
+      'Über 16 Jahre Erfahrung und mehr als 133 geleitete hochkomplexe Projekte und Programme in Corporate Governance und digitaler Transformation in den Bereichen Gesundheitswesen, Telekommunikation und IT.',
+    linkedinBtn: 'Auf LinkedIn vernetzen',
+    contactBtn: 'Executive Kontakt',
+    kpi1Label: 'Gesamter Track Record',
+    kpi1Value: '133+',
+    kpi1Sub: 'Geleitete Projekte & Programme',
+    kpi2Label: 'Verwaltetes Budget (Cases)',
+    kpi2Sub: 'Capex/Opex unter STAR-Governance',
+    kpi3Label: 'Durchschnittlicher ROI',
+    kpi3Sub: 'Erzielte Rendite & Effizienz',
+    kpi4Label: 'Branchensektoren',
+    kpi4Sub: 'Hochkomplexe Industrien',
+    aboutBadge: 'Werdegang & Executive-Qualifikationen',
+    aboutTitle: 'Von der Systemtechnik zur Unternehmensstrategie',
+    aboutP1:
+      'Mit über 133 geleiteten Projekten und Programmen im Laufe meiner Karriere verbinde ich technische Tiefe, methodische Präzision und unternehmerisches Denken, um strategische Ziele in messbare Ergebnisse umzusetzen.',
+    aboutP2:
+      'Dieser Weg begann mit einem fundierten technologischen Fundament als Bachelor of Science in Wirtschaftsinformatik (Sistemas de Informação) an der UFSC, was mir eine Kommunikation auf Augenhöhe mit Engineering-, Daten- und Architekturteams ermöglicht. Um diese Umsetzungskraft im Konzernumfeld zu skalieren, absolvierte ich einen MBA in Projektmanagement an der FGV und festigte meine Expertise in Governance, Finanzcontrolling und Risikomanagement.',
+    aboutP3:
+      'In dem Bewusstsein, dass gut umgesetzte Projekte nur dann Wert schaffen, wenn sie in die richtige Richtung zielen, schloss ich ein Aufbaustudium in Strategischem Management ab, um das Projektportfolio direkt mit den C-Level-Zielen und dem ROI des Unternehmens zu verknüpfen. Dieses Wissen ist weltweit durch die PMP®-Zertifizierung (ausgerichtet am PMBOK® 8) validiert und wird durch PMI-Spezialisierungen im Bereich Künstliche Intelligenz im Projektmanagement erweitert – für prädiktive Risikoanalysen, PMO-Automatisierung und datengestützte Entscheidungen.',
+    aboutP4:
+      'In der Praxis gestalte ich maßgeschneiderte Governance-Strukturen für jede Herausforderung und bewege mich souverän zwischen prädiktiven, agilen (adaptiven) und hybriden Vorgehensweisen.',
+    credentialsTitle: 'Zertifizierungen & Abschlüsse',
+    credentials: [
+      { title: 'Internationale PMP®-Zertifizierung', subtitle: 'PMI • Ausgerichtet am PMBOK® 8. Ausgabe', icon: 'shield' },
+      { title: 'KI im Projektmanagement', subtitle: 'Executive-Spezialisierungen • PMI', icon: 'cpu' },
+      { title: 'MBA in Projektmanagement', subtitle: 'Fundação Getulio Vargas (FGV)', icon: 'award' },
+      { title: 'Aufbaustudium Strategisches Management', subtitle: 'Unternehmensstrategie & ROI', icon: 'trending' },
+      { title: 'B.Sc. in Wirtschaftsinformatik', subtitle: 'Bundesuniversität von Santa Catarina (UFSC)', icon: 'grad' }
+    ],
+    methodologiesTitle: 'Methodische Ansätze',
+    methodologies: ['Prädiktiv', 'Agil (Adaptiv)', 'Hybrid'],
+    casesTitle: 'Executive Cases (STAR-Methodik)',
+    casesSubtitle:
+      'Sortiert nach finanzieller Relevanz (Budget) und aktuellstem Jahr. Situation, Aufgabe, Aktion und messbare Ergebnisse.',
+    filterAll: 'Alle',
+    filterSectorPrefix: 'Sektor',
+    filterTypePrefix: 'Bereich',
+    loadingCases: 'Executive-Portfolio wird geladen...',
+    emptyCases: 'Noch keine STAR-Cases für diesen Filter veröffentlicht.',
+    budgetLabel: 'Budget',
+    roiLabel: 'Impact / ROI',
+    starS: 'S — Situation & Kontext',
+    starT: 'T — Aufgabe & Executive-Herausforderung',
+    starA: 'A — Aktion & Angewandte Governance',
+    starR: 'R — Messbare Ergebnisse',
+    footerRights: 'Alle Rechte vorbehalten.',
+    adminArea: 'Administratorbereich',
+    authenticated: 'Authentifiziert'
+  }
+};
+
+// Extrai o ano mais recente de strings como "2023 - 2025" ou "2026"
+function extractLatestYear(yearStr) {
+  if (!yearStr) return 0;
+  const matches = yearStr.toString().match(/\d{4}/g);
+  if (!matches) return 0;
+  return Math.max(...matches.map(Number));
+}
+
 export default function App() {
+  // Idioma ativo (PT, EN, IT, DE) com persistência
+  const [lang, setLang] = useState(() => {
+    const saved = localStorage.getItem('portfolio_lang');
+    return saved && TRANSLATIONS[saved] ? saved : 'pt';
+  });
+
+  const t = TRANSLATIONS[lang];
+
+  const handleLanguageChange = (newLang) => {
+    setLang(newLang);
+    localStorage.setItem('portfolio_lang', newLang);
+  };
+
   // Autenticação e Sessão Real (Supabase)
   const [session, setSession] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -287,12 +532,23 @@ export default function App() {
     return ['Todos', ...Array.from(set)];
   }, [projects]);
 
-  // Projetos Filtrados
+  // Projetos Filtrados e Ordenados por Relevância (Maior Orçamento) e Ano Mais Recente
   const filteredProjects = useMemo(() => {
-    return projects.filter((p) => {
+    const filtered = projects.filter((p) => {
       const matchSector = selectedSector === 'Todos' || p.sector === selectedSector;
       const matchType = selectedType === 'Todos' || p.project_type === selectedType;
       return matchSector && matchType;
+    });
+
+    return [...filtered].sort((a, b) => {
+      const budgetA = Number(a.budget) || 0;
+      const budgetB = Number(b.budget) || 0;
+      if (budgetB !== budgetA) {
+        return budgetB - budgetA; // 1º critério: Maior orçamento (relevância)
+      }
+      const yearA = extractLatestYear(a.year);
+      const yearB = extractLatestYear(b.year);
+      return yearB - yearA; // 2º critério: Ano mais recente primeiro
     });
   }, [projects, selectedSector, selectedType]);
 
@@ -313,6 +569,21 @@ export default function App() {
     if (val >= 1000000) return `R$ ${(val / 1000000).toFixed(1)}M`;
     if (val >= 1000) return `R$ ${(val / 1000).toFixed(0)}k`;
     return `R$ ${val.toLocaleString('pt-BR')}`;
+  };
+
+  const renderCredentialIcon = (type) => {
+    switch (type) {
+      case 'shield':
+        return <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0" />;
+      case 'cpu':
+        return <Cpu className="w-5 h-5 text-emerald-400 shrink-0" />;
+      case 'award':
+        return <Award className="w-5 h-5 text-amber-400 shrink-0" />;
+      case 'trending':
+        return <TrendingUp className="w-5 h-5 text-cyan-400 shrink-0" />;
+      default:
+        return <GraduationCap className="w-5 h-5 text-slate-300 shrink-0" />;
+    }
   };
 
   return (
@@ -369,34 +640,65 @@ export default function App() {
 
       {/* Cabeçalho Executivo (Hero) */}
       <header className="border-b border-slate-800/80 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-6">
-            Portfólio Executivo & Track Record STAR
+        <div className="max-w-6xl mx-auto px-6 pt-6 flex justify-end">
+          {/* Seletor de Idiomas (PT / EN / IT / DE) */}
+          <div className="inline-flex items-center gap-1 bg-slate-900/90 border border-slate-800 rounded-lg p-1">
+            <Globe className="w-3.5 h-3.5 text-slate-400 ml-2 mr-1" />
+            {[
+              { code: 'pt', label: 'PT' },
+              { code: 'en', label: 'EN' },
+              { code: 'it', label: 'IT' },
+              { code: 'de', label: 'DE' }
+            ].map((item) => (
+              <button
+                key={item.code}
+                onClick={() => handleLanguageChange(item.code)}
+                className={`px-2.5 py-1 rounded-md text-xs font-semibold transition ${
+                  lang === item.code
+                    ? 'bg-cyan-500 text-slate-950'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+          <div className="flex flex-wrap items-center gap-2 mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase">
+              {t.heroBadge}
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase">
+              PMP® • PMBOK® 8
+            </span>
+          </div>
+
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             Romulo Radowitz
           </h1>
           <p className="text-xl md:text-2xl text-cyan-400 font-medium mb-6">
-            Diretor Corporativo de PMO & Líder de Projetos Estratégicos
+            {t.heroRole}
           </p>
-     <p className="max-w-3xl mx-auto text-slate-400 text-base md:text-lg leading-relaxed mb-8 text-balance">
-            Mais de 16 anos liderando programas e projetos de alta complexidade, governança corporativa, transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.
+          <p className="max-w-3xl text-slate-400 text-base md:text-lg leading-relaxed mb-8">
+            {t.heroSubtitle}
           </p>
-    <div className="flex flex-wrap items-center justify-center gap-4">
-        
+
+          <div className="flex flex-wrap items-center gap-4">
             <a
               href="https://www.linkedin.com/in/radowitz"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-lg text-sm transition"
             >
-              <Linkedin className="w-4 h-4" /> Conectar no LinkedIn
+              <Linkedin className="w-4 h-4" /> {t.linkedinBtn}
             </a>
             <a
               href="mailto:romuloradowitz@hotmail.com"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-medium rounded-lg text-sm transition"
             >
-              <Mail className="w-4 h-4" /> Contato Executivo
+              <Mail className="w-4 h-4" /> {t.contactBtn}
             </a>
           </div>
         </div>
@@ -407,38 +709,103 @@ export default function App() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-xl shadow-xl backdrop-blur">
             <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs uppercase tracking-wider font-semibold">Programas & Cases</span>
+              <span className="text-xs uppercase tracking-wider font-semibold">{t.kpi1Label}</span>
               <Briefcase className="w-4 h-4 text-cyan-400" />
             </div>
-            <div className="text-3xl font-bold text-white">{kpis.totalProjects}</div>
-            <p className="text-xs text-slate-500 mt-1">Entregas documentadas em STAR</p>
+            <div className="text-3xl font-bold text-white">{t.kpi1Value}</div>
+            <p className="text-xs text-slate-500 mt-1">{t.kpi1Sub}</p>
           </div>
 
           <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-xl shadow-xl backdrop-blur">
             <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs uppercase tracking-wider font-semibold">Orçamento Gerido</span>
+              <span className="text-xs uppercase tracking-wider font-semibold">{t.kpi2Label}</span>
               <DollarSign className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-3xl font-bold text-white">{formatCurrency(kpis.totalBudget)}</div>
-            <p className="text-xs text-slate-500 mt-1">Capex/Opex sob governança</p>
+            <p className="text-xs text-slate-500 mt-1">{t.kpi2Sub}</p>
           </div>
 
           <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-xl shadow-xl backdrop-blur">
             <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs uppercase tracking-wider font-semibold">ROI / Ganho Médio</span>
+              <span className="text-xs uppercase tracking-wider font-semibold">{t.kpi3Label}</span>
               <TrendingUp className="w-4 h-4 text-cyan-400" />
             </div>
             <div className="text-3xl font-bold text-white">{kpis.avgRoi.toFixed(1)}%</div>
-            <p className="text-xs text-slate-500 mt-1">Retorno e eficiência capturados</p>
+            <p className="text-xs text-slate-500 mt-1">{t.kpi3Sub}</p>
           </div>
 
           <div className="bg-slate-900/90 border border-slate-800 p-6 rounded-xl shadow-xl backdrop-blur">
             <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs uppercase tracking-wider font-semibold">Setores de Atuação</span>
+              <span className="text-xs uppercase tracking-wider font-semibold">{t.kpi4Label}</span>
               <Award className="w-4 h-4 text-amber-400" />
             </div>
             <div className="text-3xl font-bold text-white">{kpis.uniqueSectors}</div>
-            <p className="text-xs text-slate-500 mt-1">Indústrias de alta complexidade</p>
+            <p className="text-xs text-slate-500 mt-1">{t.kpi4Sub}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Narrativa Executiva, Formação, IA PMI e Metodologias */}
+      <section className="max-w-6xl mx-auto px-6 pt-14">
+        <div className="bg-slate-900/60 border border-slate-800/90 rounded-2xl p-6 md:p-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Narrativa da Trajetória (7 colunas) */}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-cyan-400 text-xs font-semibold uppercase tracking-wider">
+                {t.aboutBadge}
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">
+                {t.aboutTitle}
+              </h2>
+              <p className="text-sm md:text-base text-slate-300 leading-relaxed">
+                {t.aboutP1}
+              </p>
+              <p className="text-sm md:text-base text-slate-300 leading-relaxed">
+                {t.aboutP2}
+              </p>
+              <p className="text-sm md:text-base text-slate-300 leading-relaxed">
+                {t.aboutP3}
+              </p>
+              <p className="text-sm md:text-base text-cyan-200/90 font-medium leading-relaxed pt-1">
+                {t.aboutP4}
+              </p>
+
+              {/* Abordagens Metodológicas */}
+              <div className="pt-4 border-t border-slate-800/80">
+                <span className="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3 flex items-center gap-1.5">
+                  <Layers className="w-3.5 h-3.5 text-cyan-400" /> {t.methodologiesTitle}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {t.methodologies.map((method) => (
+                    <span
+                      key={method}
+                      className="px-3.5 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold"
+                    >
+                      {method}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Pilares Acadêmicos e Certificações (5 colunas) */}
+            <div className="lg:col-span-5 bg-slate-950/70 border border-slate-800 rounded-xl p-5 space-y-3">
+              <h3 className="text-xs uppercase tracking-wider text-slate-400 font-bold mb-3">
+                {t.credentialsTitle}
+              </h3>
+              {t.credentials.map((cred, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-3 p-3 rounded-lg bg-slate-900/80 border border-slate-800/80"
+                >
+                  <div className="mt-0.5">{renderCredentialIcon(cred.icon)}</div>
+                  <div>
+                    <div className="text-sm font-bold text-white">{cred.title}</div>
+                    <div className="text-xs text-slate-400 mt-0.5">{cred.subtitle}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -447,9 +814,9 @@ export default function App() {
       <main className="max-w-6xl mx-auto px-6 py-14">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate-800/80">
           <div>
-            <h2 className="text-2xl font-bold text-white">Cases Executivos (Metodologia STAR)</h2>
+            <h2 className="text-2xl font-bold text-white">{t.casesTitle}</h2>
             <p className="text-sm text-slate-400 mt-1">
-              Situação, Tarefa, Ação e Resultados mensuráveis entregues em liderança corporativa.
+              {t.casesSubtitle}
             </p>
           </div>
 
@@ -463,7 +830,7 @@ export default function App() {
               >
                 {sectors.map((s) => (
                   <option key={s} value={s} className="bg-slate-900">
-                    Setor: {s}
+                    {t.filterSectorPrefix}: {s === 'Todos' ? t.filterAll : s}
                   </option>
                 ))}
               </select>
@@ -475,9 +842,9 @@ export default function App() {
                 onChange={(e) => setSelectedType(e.target.value)}
                 className="bg-transparent text-sm text-slate-200 focus:outline-none"
               >
-                {types.map((t) => (
-                  <option key={t} value={t} className="bg-slate-900">
-                    Frente: {t}
+                {types.map((typeItem) => (
+                  <option key={typeItem} value={typeItem} className="bg-slate-900">
+                    {t.filterTypePrefix}: {typeItem === 'Todos' ? t.filterAll : typeItem}
                   </option>
                 ))}
               </select>
@@ -487,10 +854,10 @@ export default function App() {
 
         {/* Estado de Carregamento ou Lista de Projetos */}
         {loadingProjects ? (
-          <div className="py-20 text-center text-slate-400">Carregando portfólio executivo...</div>
+          <div className="py-20 text-center text-slate-400">{t.loadingCases}</div>
         ) : filteredProjects.length === 0 ? (
           <div className="py-20 text-center bg-slate-900/40 border border-slate-800/80 rounded-2xl mt-8">
-            <p className="text-slate-400 mb-4">Nenhum case STAR publicado para este filtro ainda.</p>
+            <p className="text-slate-400 mb-4">{t.emptyCases}</p>
             {session && (
               <button
                 onClick={openNewProjectModal}
@@ -526,13 +893,13 @@ export default function App() {
                   <div className="flex items-center gap-4">
                     {Number(project.budget) > 0 && (
                       <div className="text-right">
-                        <span className="block text-[11px] uppercase tracking-wider text-slate-500">Orçamento</span>
+                        <span className="block text-[11px] uppercase tracking-wider text-slate-500">{t.budgetLabel}</span>
                         <span className="text-sm font-bold text-slate-200">{formatCurrency(Number(project.budget))}</span>
                       </div>
                     )}
                     {Number(project.roi) > 0 && (
                       <div className="text-right">
-                        <span className="block text-[11px] uppercase tracking-wider text-slate-500">Impacto / ROI</span>
+                        <span className="block text-[11px] uppercase tracking-wider text-slate-500">{t.roiLabel}</span>
                         <span className="text-sm font-bold text-emerald-400">+{project.roi}%</span>
                       </div>
                     )}
@@ -562,13 +929,13 @@ export default function App() {
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-1 flex items-center gap-1">
-                        <ChevronRight className="w-3.5 h-3.5" /> S — Situação & Contexto
+                        <ChevronRight className="w-3.5 h-3.5" /> {t.starS}
                       </h4>
                       <p className="text-sm text-slate-300 leading-relaxed">{project.situation}</p>
                     </div>
                     <div>
                       <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-1 flex items-center gap-1">
-                        <ChevronRight className="w-3.5 h-3.5" /> T — Tarefa & Desafio Executivo
+                        <ChevronRight className="w-3.5 h-3.5" /> {t.starT}
                       </h4>
                       <p className="text-sm text-slate-300 leading-relaxed">{project.task}</p>
                     </div>
@@ -577,13 +944,13 @@ export default function App() {
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-1 flex items-center gap-1">
-                        <ChevronRight className="w-3.5 h-3.5" /> A — Ação & Governança Aplicada
+                        <ChevronRight className="w-3.5 h-3.5" /> {t.starA}
                       </h4>
                       <p className="text-sm text-slate-300 leading-relaxed">{project.action}</p>
                     </div>
                     <div className="bg-emerald-950/20 border border-emerald-900/40 rounded-xl p-4">
                       <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1 flex items-center gap-1">
-                        <CheckCircle2 className="w-3.5 h-3.5" /> R — Resultados Mensuráveis
+                        <CheckCircle2 className="w-3.5 h-3.5" /> {t.starR}
                       </h4>
                       <p className="text-sm text-emerald-100 leading-relaxed font-medium">{project.result}</p>
                     </div>
@@ -598,7 +965,7 @@ export default function App() {
       {/* Rodapé */}
       <footer className="border-t border-slate-900 bg-slate-950 py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Romulo Radowitz. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} Romulo Radowitz. {t.footerRights}</p>
           {!session ? (
             <button
               onClick={() => {
@@ -607,10 +974,10 @@ export default function App() {
               }}
               className="inline-flex items-center gap-1.5 text-slate-500 hover:text-cyan-400 transition"
             >
-              <Lock className="w-3.5 h-3.5" /> Área do Administrador
+              <Lock className="w-3.5 h-3.5" /> {t.adminArea}
             </button>
           ) : (
-            <span className="text-emerald-500">Autenticado</span>
+            <span className="text-emerald-500">{t.authenticated}</span>
           )}
         </div>
       </footer>
@@ -743,8 +1110,8 @@ export default function App() {
                     className="w-full px-3.5 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-cyan-400"
                   />
                   <datalist id="types-list">
-                    {DEFAULT_TYPES.map((t) => (
-                      <option key={t} value={t} />
+                    {DEFAULT_TYPES.map((typeItem) => (
+                      <option key={typeItem} value={typeItem} />
                     ))}
                   </datalist>
                 </div>
