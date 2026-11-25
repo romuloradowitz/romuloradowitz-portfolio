@@ -22,7 +22,9 @@ import {
   Cpu,
   Layers,
   GraduationCap,
-  ShieldCheck
+  ShieldCheck,
+  UserCheck,
+  FolderKanban
 } from 'lucide-react';
 import { supabase } from './supabaseClient';
 
@@ -35,6 +37,8 @@ const TRANSLATIONS = {
     heroRole: 'Diretor Corporativo de PMO & Líder de Projetos Estratégicos',
     heroSubtitle:
       'Mais de 16 anos e +133 projetos e programas liderados de alta complexidade, governança corporativa e transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.',
+    navTrajectoryBtn: 'Trajetória',
+    navProjectsBtn: 'Projetos',
     linkedinBtn: 'Conectar no LinkedIn',
     contactBtn: 'Contato Executivo',
     kpi1Label: 'Track Record Total',
@@ -89,6 +93,8 @@ const TRANSLATIONS = {
     heroRole: 'Corporate PMO Director & Strategic Portfolio Leader',
     heroSubtitle:
       'Over 16 years and 133+ high-complexity projects and programs led across corporate governance and digital transformation in Healthcare, Telecommunications, and Information Technology.',
+    navTrajectoryBtn: 'Background',
+    navProjectsBtn: 'Projects',
     linkedinBtn: 'Connect on LinkedIn',
     contactBtn: 'Executive Contact',
     kpi1Label: 'Total Track Record',
@@ -143,6 +149,8 @@ const TRANSLATIONS = {
     heroRole: 'Direttore PMO Corporate & Leader di Progetti Strategici',
     heroSubtitle:
       'Oltre 16 anni e più di 133 progetti e programmi guidati ad alta complessità, governance aziendale e trasformazione digitale nei settori Sanità Integrativa, Telecomunicazioni e Information Technology.',
+    navTrajectoryBtn: 'Percorso',
+    navProjectsBtn: 'Progetti',
     linkedinBtn: 'Connetti su LinkedIn',
     contactBtn: 'Contatto Esecutivo',
     kpi1Label: 'Track Record Totale',
@@ -197,6 +205,8 @@ const TRANSLATIONS = {
     heroRole: 'Corporate PMO Director & Strategischer Portfoliomanager',
     heroSubtitle:
       'Über 16 Jahre Erfahrung und mehr als 133 geleitete hochkomplexe Projekte und Programme in Corporate Governance und digitaler Transformation in den Bereichen Gesundheitswesen, Telekommunikation und IT.',
+    navTrajectoryBtn: 'Werdegang',
+    navProjectsBtn: 'Projekte',
     linkedinBtn: 'Auf LinkedIn vernetzen',
     contactBtn: 'Executive Kontakt',
     kpi1Label: 'Gesamter Track Record',
@@ -256,6 +266,51 @@ function extractLatestYear(yearStr) {
   return Math.max(...matches.map(Number));
 }
 
+// Emblemas Institucionais Vetoriais (PMI, FIA, FGV)
+function InstitutionLogos() {
+  return (
+    <div className="inline-flex items-center gap-2">
+      {/* PMI */}
+      <span
+        title="Project Management Institute (PMI)"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs font-bold tracking-wider"
+      >
+        <svg className="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="2" width="9" height="9" rx="1.5" fill="currentColor" />
+          <rect x="13" y="2" width="9" height="9" rx="1.5" fill="#10b981" />
+          <rect x="2" y="13" width="9" height="9" rx="1.5" fill="#f59e0b" />
+          <path d="M13 13h9v9h-9z" stroke="currentColor" strokeWidth="2" />
+        </svg>
+        PMI
+      </span>
+
+      {/* FIA */}
+      <span
+        title="Fundação Instituto de Administração (FIA Business School)"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs font-bold tracking-wider"
+      >
+        <svg className="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none">
+          <polygon points="12,2 22,20 2,20" stroke="currentColor" strokeWidth="2.2" fill="none" />
+          <circle cx="12" cy="14" r="2.2" fill="currentColor" />
+        </svg>
+        FIA
+      </span>
+
+      {/* FGV */}
+      <span
+        title="Fundação Getulio Vargas (FGV)"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs font-bold tracking-wider"
+      >
+        <svg className="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="2.2" />
+          <path d="M7 12h10M12 7v10" stroke="currentColor" strokeWidth="2" />
+        </svg>
+        FGV
+      </span>
+    </div>
+  );
+}
+
 export default function App() {
   // Idioma ativo (PT, EN, IT, DE) com persistência
   const [lang, setLang] = useState(() => {
@@ -268,6 +323,14 @@ export default function App() {
   const handleLanguageChange = (newLang) => {
     setLang(newLang);
     localStorage.setItem('portfolio_lang', newLang);
+  };
+
+  // Rolagem suave para as seções
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   // Autenticação e Sessão Real (Supabase)
@@ -544,11 +607,11 @@ export default function App() {
       const budgetA = Number(a.budget) || 0;
       const budgetB = Number(b.budget) || 0;
       if (budgetB !== budgetA) {
-        return budgetB - budgetA; // 1º critério: Maior orçamento (relevância)
+        return budgetB - budgetA;
       }
       const yearA = extractLatestYear(a.year);
       const yearB = extractLatestYear(b.year);
-      return yearB - yearA; // 2º critério: Ano mais recente primeiro
+      return yearB - yearA;
     });
   }, [projects, selectedSector, selectedType]);
 
@@ -587,7 +650,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500/30 selection:text-cyan-200 scroll-smooth">
       {/* Notificação Flutuante */}
       {toast && (
         <div
@@ -638,7 +701,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Cabeçalho Executivo (Hero) */}
+      {/* Cabeçalho Executivo (Hero Centralizado) */}
       <header className="border-b border-slate-800/80 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="max-w-6xl mx-auto px-6 pt-6 flex justify-end">
           {/* Seletor de Idiomas (PT / EN / IT / DE) */}
@@ -665,14 +728,16 @@ export default function App() {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
-          <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase">
+        <div className="max-w-6xl mx-auto px-6 py-12 md:py-16 text-center flex flex-col items-center">
+          {/* Badges + Logos PMI, FIA, FGV centralizados */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-6">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase">
               {t.heroBadge}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase">
               PMP® • PMBOK® 8
             </span>
+            <InstitutionLogos />
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
@@ -681,11 +746,26 @@ export default function App() {
           <p className="text-xl md:text-2xl text-cyan-400 font-medium mb-6">
             {t.heroRole}
           </p>
-          <p className="max-w-3xl text-slate-400 text-base md:text-lg leading-relaxed mb-8">
+          <p className="max-w-3xl mx-auto text-slate-400 text-base md:text-lg leading-relaxed mb-8">
             {t.heroSubtitle}
           </p>
 
-          <div className="flex flex-wrap items-center gap-4">
+          {/* Botões de Ação Centralizados: Trajetória, Projetos, LinkedIn e Contato */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5">
+            <button
+              type="button"
+              onClick={() => scrollToSection('trajetoria')}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-800/90 hover:bg-slate-700 text-cyan-300 border border-cyan-500/30 font-semibold rounded-lg text-sm transition cursor-pointer"
+            >
+              <UserCheck className="w-4 h-4" /> {t.navTrajectoryBtn}
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('projetos')}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-800/90 hover:bg-slate-700 text-emerald-300 border border-emerald-500/30 font-semibold rounded-lg text-sm transition cursor-pointer"
+            >
+              <FolderKanban className="w-4 h-4" /> {t.navProjectsBtn}
+            </button>
             <a
               href="https://www.linkedin.com/in/radowitz"
               target="_blank"
@@ -746,7 +826,7 @@ export default function App() {
       </section>
 
       {/* Seção Narrativa Executiva, Formação, IA PMI e Metodologias */}
-      <section className="max-w-6xl mx-auto px-6 pt-14">
+      <section id="trajetoria" className="max-w-6xl mx-auto px-6 pt-14 scroll-mt-6">
         <div className="bg-slate-900/60 border border-slate-800/90 rounded-2xl p-6 md:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Narrativa da Trajetória (7 colunas) */}
@@ -811,7 +891,7 @@ export default function App() {
       </section>
 
       {/* Filtros e Listagem de Cases STAR */}
-      <main className="max-w-6xl mx-auto px-6 py-14">
+      <main id="projetos" className="max-w-6xl mx-auto px-6 py-14 scroll-mt-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate-800/80">
           <div>
             <h2 className="text-2xl font-bold text-white">{t.casesTitle}</h2>
