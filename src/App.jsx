@@ -34,7 +34,7 @@ const DEFAULT_TYPES = ['Transformação Organizacional', 'Implantação de PMO',
 const TRANSLATIONS = {
   pt: {
     heroBadge: 'Portfólio Executivo & Track Record STAR',
-    heroRole: 'Líder de Projetos Estratégicos &  PMO',
+    heroRole: 'Executivo de Projetos Estratégicos &  PMO',
     heroSubtitle:
       'Mais de 16 anos e +133 projetos e programas liderados de alta complexidade, governança corporativa e transformação digital nos setores de Saúde Suplementar, Telecomunicações e Tecnologia da Informação.',
     navTrajectoryBtn: 'Trajetória',
