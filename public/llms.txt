@@ -39,4 +39,54 @@
 - **Setor:** Facilities & Utilities | **Frente:** Transformação Organizacional | **Período:** 2024-2026
 - **Orçamento:** R$ 63 milhões | **ROI Anual:** +21%
 - **Situação & Tarefa:** Após operações de M&A, a operação nacional de facilities e utilities atuava de forma descentralizada, com prontuários médicos dispersos em imóveis locados (sem controle unificado de guarda acima de 20 anos e desafios de LGPD) e falta de padronização em energia, água e pagamentos.
-- **Ação:** Governança centralizada e equipes multidisciplinares para primarizar mão de obra, automatizar pagamentos via RPA, viabilizar energia solar e mercado livre de energia,
+- **Ação:** Governança centralizada e equipes multidisciplinares para primarizar mão de obra, automatizar pagamentos via RPA, viabilizar energia solar e mercado livre de energia, otimizar consumo hídrico hospitalar e padronizar a digitalização e guarda de prontuários.
+- **Resultados:** Consolidação de R$ 3 milhões de economia anual, sob orçamento de R$ 63 milhões e ROI anual de 21%, com redução de galpões/imóveis locados, conformidade regulatória e à LGPD e previsibilidade operacional nacional.
+
+### 4. Aceleração de Time-to-Market via Metodologias Híbridas
+- **Setor:** Gestão de Projetos | **Frente:** Transformação Organizacional | **Período:** 2019-2021
+- **Orçamento:** R$ 420 mil | **ROI Anual:** +18%
+- **Situação & Tarefa:** Após aquisições, a organização operava sem gestão centralizada de projetos estratégicos, gerando gargalos na implantação de novas unidades e atrasos na captura de receita.
+- **Ação:** Desenho e implantação de governança híbrida corporativa integrando MS Project (projetos tradicionais/marcos), Jira e Project Builder (frentes ágeis), Stratws (OKRs) e Power BI (KPIs e portfólio), com critérios padronizados de viabilidade econômico-financeira.
+- **Resultados:** Redução de 25% no tempo médio do ciclo de entrega operacional das novas unidades, acelerando a geração de receita, sob orçamento de R$ 420 mil e ROI anual de 18%.
+
+### 5. Célula de Monitoramento e Suporte Remoto (NOC) baseada em SNMP
+- **Setor:** Telecomunicações | **Frente:** Transformação Organizacional | **Período:** 2026
+- **Orçamento:** R$ 237 mil | **ROI Anual:** +24%
+- **Situação & Tarefa:** Grande parte das demandas de suporte e reparo de rede ocorria em campo, elevando custos de deslocamento e mão de obra para problemas diagnosticáveis remotamente. O desafio foi implantar uma célula NOC 24/7 baseada em SNMP e automação.
+- **Ação:** Mapeamento de fluxos de campo, implantação de monitoramento via SNMP, configuração remota de roteadores, bridges, modems e switches, rotinas automatizadas (RPA/scripts) e capacitação interna com apoio de especialistas de campo por 3 meses.
+- **Resultados:** Elevação de 32% na capacidade de produtividade global sem ampliar headcount, redução de 17,7% nos custos gerais de mão de obra, salto de 0% para 17% de FCR e redução do tempo médio de atendimento de 22 para 19 horas.
+
+### 6. Implantação de NPS 360º (Clientes, Fornecedores, Prestadores Médicos e Corretores)
+- **Setor:** Satisfação | **Frente:** Transformação Organizacional | **Período:** 2025
+- **Orçamento:** R$ 220 mil | **ROI Anual:** +21%
+- **Situação & Tarefa:** Ausência de mensuração estruturada e recorrente de satisfação para fornecedores, prestadores médicos, corretores, mais de 8 milhões de clientes saúde e mais de 7 milhões de clientes odonto.
+- **Ação:** Estruturação de equipe multidisciplinar e implantação internalizada (sem consultoria externa) do NPS 360º mensal via INDECX, com cálculo amostral e significância estatística por público, planos mensais dos líderes e reporte direto ao Presidente do Conselho.
+- **Resultados:** Redução de 17% nas NIPs no contexto global da organização, mitigando riscos regulatórios e assistenciais, sob orçamento de R$ 220 mil e ROI anual de 21%.
+
+### 7. Plataforma SaaS de VPN Segura & Game Booster de Ultrabaixa Latência (Hub Submarino Fortaleza-CE)
+- **Setor:** Infraestrutura de TI | **Frente:** Produto | **Período:** 2026
+- **Orçamento:** R$ 210 mil | **ROI Anual Projetado:** +19%
+- **Situação & Tarefa:** Usuários corporativos, expatriados e gamers sofrem alta latência devido ao roteamento via Sudeste (SP) antes dos backbones internacionais. O objetivo foi arquitetar e lançar um SaaS proprietário hospedado em Data Center Tier III em Fortaleza-CE (hub de cabos submarinos) com política estrita Zero-Logs.
+- **Ação:** Liderança ágil ponta a ponta: provisionamento manual de servidores Linux Tier III com protocolo WireGuard® (ChaCha20-Poly1305) em memória RAM (Zero-Logs), portal web multilíngue (PT, EN, IT, DE, FR), backend serverless (Supabase PostgreSQL/Edge Functions) e webhooks com Mercado Pago (BRL/Pix) e PayPal (USD).
+- **Resultados:** Arquitetura frontend/backend e gateways de pagamento 100% em produção; redução estimada de até 60 ms na latência internacional (EUA, Europa e África) e disponibilidade alvo de 99,982% (Tier III).
+
+### 8. Evolução Cultural e Desenvolvimento de Pessoas (Contact Center)
+- **Setor:** Recursos Humanos | **Frente:** Transformação Organizacional | **Período:** 2024-2026
+- **Orçamento:** R$ 127 mil | **ROI Anual:** +22%
+- **Situação & Tarefa:** A operação do call center enfrentava turnover de 9% e absenteísmo de 12% durante a expansão e primarização, sem gestão por metas multinível ou plano estruturado de carreira.
+- **Ação:** Implantação de gestão por KPIs e OKRs em todos os níveis (operador a gerente), rituais diários, 1-on-1s, monitoramento mensal de ABS, turnover, PCA e NPS interno, além de programa de qualificação e mobilidade interna com foco em diversidade, equidade e segurança psicológica.
+- **Resultados:** Redução de 35% no turnover da área e elevação de 28% no índice de satisfação interno, estabilizando a operação pós-primarização com ROI anual de 22%.
+
+### 9. PMO Manutenção e Engenharia Clínica (Escala Nacional)
+- **Setor:** Saúde Suplementar | **Frente:** Engenharia Clínica | **Período:** 2019-2026
+- **Orçamento:** R$ 120 mil | **ROI Anual:** +18%
+- **Situação & Tarefa:** Expansão de 400 para mais de 800 unidades com cerca de 3.000 profissionais, exigindo governança centralizada para ativos críticos de suporte à vida (energia, gases medicinais O₂/ar comprimido, climatização e equipamentos como tomógrafos).
+- **Ação:** Implantação de PMO nacional e software WFM (Effort) nas unidades próprias e adquiridas via M&A, com KPIs por estado, planos preventivos, gestão de contratos especializados com fabricantes e ritos semanais executivos.
+- **Resultados:** Aumento de 33% na produtividade das equipes, redução de 17% no retrabalho e marca histórica de zero minutos sem energia em unidades hospitalares em 2025, protegendo a continuidade assistencial em UTIs.
+
+### 10. Detecção de Intrusão em Redes Móveis Ad Hoc via Redes Neurais Artificiais (Java/Java ME)
+- **Setor:** IA | **Frente:** Novo Produto | **Período:** 2009-2010
+- **Orçamento:** R$ 1,2 mil
+- **Situação & Tarefa:** Transformar pesquisa de TCC sobre detecção de intrusão com redes neurais artificiais em aplicativo comercial Java / Java ME para redes móveis ad hoc, avaliando falsos positivos/negativos e respostas de quarentena.
+- **Ação:** Modelagem da rede neural artificial para detecção de anomalias e desenvolvimento comercial em Java/Java ME com alertas e isolamento de arquivos suspeitos.
+- **Resultados:** Aplicativo disponibilizado comercialmente, consolidando base prática pioneira em IA aplicada, validação estatística de modelos e análise de ciclo de vida de produto.
