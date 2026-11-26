@@ -1,16 +1,42 @@
 # Romulo Radowitz — Diretor Corporativo de PMO & Gestão de Portfólio (PMP®)
 
-> Executivo de Projetos Estratégicos, PMO Corporativo e Value Management Office (VMO) com +16 anos de experiência, +133 projetos e programas liderados e histórico comprovado em Saúde Suplementar, Telecomunicações e TI.
+> Executivo de Projetos Estratégicos, PMO Corporativo e Value Management Office (VMO) com +16 anos de experiência, +133 projetos e programas liderados e histórico comprovado em Saúde Suplementar, Telecomunicações, Infraestrutura e Tecnologia da Informação.
 
 ## Perfil & Credenciais
 - **Site Oficial:** https://www.romuloradowitz.com.br/
 - **LinkedIn:** https://www.linkedin.com/in/radowitz/
-- **Certificações:** Project Management Professional (PMP® - PMBOK 8), AI For Agile (PMI), Cognitive Project Management in AI (PMI), Seven AI Project Patterns (PMI).
+- **E-mail:** romuloradowitz@hotmail.com
+- **Certificações:** Project Management Professional (PMP® - PMBOK® 8ª Edição), IA Aplicada a Projetos (AI For Agile, Cognitive Project Management in AI, Seven AI Project Patterns - PMI).
 - **Formação Acadêmica:** Bacharel em Sistemas de Informação (UFSC), MBA em Gerenciamento de Projetos (FGV), Pós-Graduação Executiva em Administração Estratégica (FIA Business School).
-- **Especialidades:** Governança Corporativa de PMO/VMO, Gestão de Portfólio (PPM), Metodologias Ágeis, Preditivas e Híbridas, Integração Pós-M&A, Transformação Digital e IA Aplicada a Projetos.
+- **Abordagens Metodológicas:** Preditiva, Ágil (Adaptativa) e Híbrida.
+- **Especialidades:** Governança Corporativa de PMO/VMO, Gestão de Portfólio (PPM), Integração Pós-M&A, Transformação Digital, Engenharia Clínica & Facilities, Contact Center e Inteligência Artificial Aplicada a Projetos.
 
-## Principais Resultados & Track Record (Metodologia STAR)
-- **Escala de Portfólio:** +133 projetos e programas estratégicos liderados com ROI médio realizado de 167% e redução de 25% no time-to-market.
-- **Eficiência Operacional & IA:** Automação de processos críticos com Advanced Analytics e IA, gerando R$ 19 milhões em economia anual recorrente.
-- **Qualidade & Regulação (Saúde Suplementar):** Reestruturação de jornada e governança operacional que reduziu em 83% as reclamações regulatórias (NIPs).
-- **Expansão & Infraestrutura:** Gestão de portfólio de expansão e integração pós-M&A superando R$ 640 milhões em investimentos geridos.
+## Indicadores Consolidados do Portfólio
+- **Track Record Total:** +133 projetos e programas estratégicos liderados.
+- **Orçamento Gerido (Cases STAR):** R$ 918,3 milhões (Capex/Opex sob governança STAR).
+- **ROI / Ganho Médio Anual:** 17,8% nos cases consolidados.
+- **Setores de Atuação:** 9 indústrias de alta complexidade (Saúde Suplementar, Telecomunicações, TI & Infraestrutura, Facilities & Utilities, Engenharia Clínica, Contact Center, Satisfação/CX, Recursos Humanos e Gestão de Projetos).
+
+---
+
+## Cases Executivos (Metodologia STAR)
+
+### 1. Expansão de Portfólio e Ativos Físicos em 17 Estados (Verticalização em Saúde Suplementar)
+- **Setor:** Saúde Suplementar | **Frente:** Verticalização | **Período:** 2019-2024
+- **Orçamento:** R$ 643,1 milhões (ano médio) | **ROI Anual:** +17%
+- **Situação & Tarefa:** A verticalização da rede assistencial em múltiplos estados exigia ampliar a capacidade própria de atendimento e reduzir a dependência de prestadores terceirizados, mantendo rigor regulatório, controle de custos e previsibilidade de cronograma em uma operação geograficamente distribuída.
+- **Ação:** Implementação de ritos de governança executiva, acompanhamento de marcos críticos, padronização de entregas e alinhamento multifuncional entre áreas técnicas, operacionais e regulatórias para destravar dependências ao longo da expansão multirregional.
+- **Resultados:** Entrega de 66 unidades hospitalares e 625 leitos em 17 estados, sob orçamento de R$ 643,1 milhões e ROI anual de 17%, ampliando a capacidade assistencial própria e a eficiência da operação verticalizada.
+
+### 2. Centralização, Primarização e Digitalização de Contact Center
+- **Setor:** Contact Center | **Frente:** Transformação Organizacional | **Período:** 2024-2026
+- **Orçamento:** R$ 210,9 milhões | **ROI Anual:** +18%
+- **Situação & Tarefa:** Após sucessivas aquisições, a operação de atendimento encontrava-se fragmentada em múltiplas localidades pelo Brasil, sem padronização de processos, sistemas ou infraestrutura. A meta foi liderar a centralização em Fortaleza-CE com modelo primarizado, incorporando speech analytics, chat e Inteligência Artificial.
+- **Ação:** Governança híbrida aplicando abordagem tradicional para infraestrutura física, contratação e primarização da equipe, e ciclos ágeis para sistemas e camadas digitais. Coordenação da implantação de 5.200 posições de atendimento em Fortaleza-CE junto a TI e RH.
+- **Resultados:** Redução de 19% no cost-to-serve (R$ 19 milhões de economia anual) e queda de 83% no volume de NIPs da ANS, reduzindo passivos regulatórios e financeiros e elevando a eficiência e a segurança assistencial.
+
+### 3. Programa de Transformação Digital e Eficiência Financeira em Facilities & Utilities
+- **Setor:** Facilities & Utilities | **Frente:** Transformação Organizacional | **Período:** 2024-2026
+- **Orçamento:** R$ 63 milhões | **ROI Anual:** +21%
+- **Situação & Tarefa:** Após operações de M&A, a operação nacional de facilities e utilities atuava de forma descentralizada, com prontuários médicos dispersos em imóveis locados (sem controle unificado de guarda acima de 20 anos e desafios de LGPD) e falta de padronização em energia, água e pagamentos.
+- **Ação:** Governança centralizada e equipes multidisciplinares para primarizar mão de obra, automatizar pagamentos via RPA, viabilizar energia solar e mercado livre de energia,
